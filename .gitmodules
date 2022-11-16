@@ -3,3 +3,6 @@
 	url = https://github.com/tronprotocol/protocol.git
 	branch = master
 	ignore = dirty
+[submodule "proto/googleapis"]
+	path = proto/googleapis
+	url = https://github.com/googleapis/googleapis.git
