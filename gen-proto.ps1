@@ -44,10 +44,10 @@ mkdir ./pkg/proto/util
 
 Get-ChildItem ./pkg/proto/api/*.go -Recurse | ForEach-Object {
 # Read the file and use replace()
-    (Get-Content $_) -replace 'github.com/tronprotocol/grpc-gateway','github.com/fbsobreira/gotron-sdk/pkg/proto'| Set-Content $_
+    (Get-Content $_) -replace 'github.com/tronprotocol/grpc-gateway','github.com/h2570su/gotron-sdk/pkg/proto'| Set-Content $_
 }
 
 Get-ChildItem ./pkg/proto/util/*.go -Recurse | ForEach-Object {
 # Read the file and use replace()
-    (Get-Content $_) -replace 'github.com/tronprotocol/grpc-gateway','github.com/fbsobreira/gotron-sdk/pkg/proto'| Set-Content $_
+    (Get-Content $_) -replace 'github.com/tronprotocol/grpc-gateway','github.com/h2570su/gotron-sdk/pkg/proto'| Set-Content $_
 }

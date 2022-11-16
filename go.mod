@@ -1,4 +1,4 @@
-module github.com/fbsobreira/gotron-sdk
+module github.com/h2570su/gotron-sdk
 
 go 1.17
 

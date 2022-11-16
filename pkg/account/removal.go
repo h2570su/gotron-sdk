@@ -5,8 +5,8 @@ import (
 	"os"
 	"path"
 
-	"github.com/fbsobreira/gotron-sdk/pkg/common"
-	"github.com/fbsobreira/gotron-sdk/pkg/store"
+	"github.com/h2570su/gotron-sdk/pkg/common"
+	"github.com/h2570su/gotron-sdk/pkg/store"
 	"github.com/mitchellh/go-homedir"
 )
 
