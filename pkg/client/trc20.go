@@ -164,6 +164,9 @@ func (g *GrpcClient) TRC20ContractBalance(addr, contractAddress string) (*big.In
 
 // TRC20Send send token to address
 func (g *GrpcClient) TRC20Send(from, to, contract string, amount *big.Int, feeLimit int64) (*api.TransactionExtention, error) {
+	return g.TRC20SendRaw(from, to, contract, amount, feeLimit, false)
+}
+func (g *GrpcClient) TRC20SendRaw(from, to, contract string, amount *big.Int, feeLimit int64, estimating bool) (*api.TransactionExtention, error) {
 	addrB, err := address.Base58ToAddress(to)
 	if err != nil {
 		return nil, err
@@ -171,11 +174,14 @@ func (g *GrpcClient) TRC20Send(from, to, contract string, amount *big.Int, feeLi
 	ab := common.LeftPadBytes(amount.Bytes(), 32)
 	req := trc20TransferMethodSignature + "0000000000000000000000000000000000000000000000000000000000000000"[len(addrB.Hex())-4:] + addrB.Hex()[4:]
 	req += common.Bytes2Hex(ab)
-	return g.TRC20Call(from, contract, req, false, feeLimit)
+	return g.TRC20Call(from, contract, req, estimating, feeLimit)
 }
 
 // TRC20Approve approve token to address
 func (g *GrpcClient) TRC20Approve(from, to, contract string, amount *big.Int, feeLimit int64) (*api.TransactionExtention, error) {
+	return g.TRC20ApproveRaw(from, to, contract, amount, feeLimit, false)
+}
+func (g *GrpcClient) TRC20ApproveRaw(from, to, contract string, amount *big.Int, feeLimit int64, estimating bool) (*api.TransactionExtention, error) {
 	addrB, err := address.Base58ToAddress(to)
 	if err != nil {
 		return nil, err
@@ -183,5 +189,5 @@ func (g *GrpcClient) TRC20Approve(from, to, contract string, amount *big.Int, fe
 	ab := common.LeftPadBytes(amount.Bytes(), 32)
 	req := trc20ApproveMethodSignature + "0000000000000000000000000000000000000000000000000000000000000000"[len(addrB.Hex())-4:] + addrB.Hex()[4:]
 	req += common.Bytes2Hex(ab)
-	return g.TRC20Call(from, contract, req, false, feeLimit)
+	return g.TRC20Call(from, contract, req, estimating, feeLimit)
 }
